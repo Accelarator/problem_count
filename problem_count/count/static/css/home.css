@@ -1,0 +1,80 @@
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+a:after {
+    color:rgb(129,129,129);
+}
+a:visited {
+    color:rgb(129,129,129);
+}
+a:before {
+    color:rgb(129,129,129);
+}
+a:hover {
+    color:blue;
+}
+.top {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    background-color: rgb(34,34,34);
+    text-align: center;
+    color: rgb(119, 119, 119);
+}
+
+.top h1 {
+    cursor: pointer;
+    height:24px;
+    line-height:24px;
+}
+
+.content {
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top:70px;
+    left: 0;
+}
+
+.content li {
+    list-style:none;
+}
+.foot {
+    position: absolute;
+    color:rgb(129,129,129);
+    text-align: center;
+    position: absolute;
+    width:100%;
+    top: 79%;
+}
+
+.left {
+    float:left;
+    height: 100%;
+    width: 45%;
+}
+.right {
+    border-left: 3px solid #ddd;
+    float: right;
+    height: 100%;
+    width: 45%;
+}
+
+.img {
+    width:20px;
+    height:20px;
+}
+
+.input_account {
+    margin-left:5%;
+}

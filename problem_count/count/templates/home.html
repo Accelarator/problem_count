@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/home.css"
+        />
+        <script src="{{ STATIC_URL }}/scripts/jquery-1.12.3.min.js"></script>
+        <script src="{{ STATIC_URL }}/scripts/home.js"></script>
+        <title>
+            Online Judge System 刷题数在线查询系统
+        </title>
+    </head>
+
+    <body>
+        <div class="top">
+            <h1 id="title">NBUT 在线题量查询系统</h1>
+        </div>
+        <div class="content">
+            <div id="left" class="left">
+                <h3>
+                    输入账号查询，你可以输入任意数量的账号，注意输入的账号不能留空
+                </h3>
+                <div id="input_account" class="input_account">
+                    <img class="img" id="add" src="{{STATIC_URL}}/images/add_icon.png" />
+                    <span>用户名</span>
+                </div>
+            </div>
+            <div id="right" class="right">
+                <h3>目前此平台支持查询题数的平台有：</h3>
+                <ul>
+                    <li><a href="http://acm.hdu.edu.cn/">HDOJ</a></li>
+                    <li><a href="http://poj.org/">POJ</a></li>
+                    <li><a href="http://codeforces.com/">CODEFORCES</a></li>
+                    <li><a href="http://lightoj.com/login_main.php">LIGHTOJ</a></li>
+                    <li><a href="http://www.spoj.com/">SPOJ</a></li>
+                    <li><a href="http://www.lydsy.com/JudgeOnline/">BZOJ</a></li>
+                    <li><a href="https://ac.2333.moe/">NBUT OJ</a></li>
+                    <li><a
+                           href="http://acm.zju.edu.cn/onlinejudge/showProblem.do?problemCode=3175">ZOJ</a></li>
+                   <li><a href="http://acm.sgu.ru/">SGU</a></li>
+                   <li><a href="http://acm.timus.ru/">URAL</a></li>
+                   <li><a href="http://acm.fzu.edu.cn/">FZU</a></li>
+                   <li><a href="http://acdream.info/">ACDREAM</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot">
+            <hr />
+            <p> Server Time: <span id="server_time"></span></p>
+            <p>You can improve the site by leaving a message on <a
+                                   href="http://tokers.cn">here</a>, or you can
+                               mail to <a
+                                   href="mailto:zchao1995@gmail.com">us</a>.</p>
+        </div>
+    </body>
+</html>
