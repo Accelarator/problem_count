@@ -17,7 +17,7 @@ def spide_for_poj(username):
         return get_data_failed
     data = data.decode('utf-8')
     table_data = match(poj_table_pattern, data)
-    if table_data is None:
+    if table_data is None or len(table_data) < 1:
         return match_user_failed
     td_data = match(poj_td_pattern, table_data[0]) 
     for i in range(0, len(td_data), 6):
