@@ -18,17 +18,16 @@ MPN = os.cpu_count()
 TIME = 10
 # Each OJ's URL
 hdu_url = 'http://acm.hdu.edu.cn/search.php?field=author&key='
+fzu_url = 'http://acm.fzu.edu.cn/user.php?uname='
 poj_url = 'http://poj.org/searchuser?key={0}&B1=Search'
 noj_url = 'https://ac.2333.moe/User/user_list.xhtml?page='
 codeforces_url = 'http://codeforces.com/problemset/standings/page/'
 spoj_url = 'http://www.spoj.com/ranks/users/start='
-bzoj_url = 'http://www.lydsy.com/JudgeOnline/ranklist.php?start='
-zoj_url = 'http://acm.zju.edu.cn/onlinejudge/showRankList.do?contestId=1&from='
-sgu_url = 'http://acm.sgu.ru/standing.php?onpage=50&page='
-ural_url = 'http://acm.timus.ru/ranklist.aspx?from='
-fzu_url = 'http://acm.fzu.edu.cn/ranklist.php?page='
-acdream_url = 'http://acdream.info/ranklist?page='
-
+bzoj_url = 'http://www.lydsy.com/JudgeOnline/userinfo.php?user='
+sgu_url = 'http://acm.sgu.ru/teaminfo.php?id='
+ural_url = 'http://acm.timus.ru/search.aspx?Str='
+zoj_url = 'http://www.icpc.moe/onlinejudge/showRuns.do?contestId=1&search=true&firstId=-1&lastId=-1&problemCode=&handle={0}&idStart=&idEnd='
+acdream_url = 'http://acdream.info/user/'
 # Corresponding regular expression pattern.
 # hdu 
 hdu_table_pattern = '<table width="80%" border="0" align="center" cellspacing="2" class=\'TABLE_TEXT\'>([\s\S]*?)</table>'
@@ -48,7 +47,29 @@ poj_td_pattern = '<td>([\s\S]*?)</td>'
 poj_username_pattern = '<a href=[\s\S]*?>([\s\S]*?)</a>'
 
 # sgu
+sgu_table_pattern = '<table width=90% align=center>([\s\S]*?)</table>'
+sgu_tr_pattern = '<td>([\s\S]*?)</td>'
+sgu_ac_number_pattern = 'Accepted: ([0-9]*)'
+#bzoj 
+bzoj_ac_pattern = '<a href=\'[\s\S]*?jresult=4\'>([\s\S]*?)</a>'
 
+# zoj
+zoj_user_pattern = '<td class="runUserName"><a href="([\s\S]*?)"><font color="db6d00">[\s\S]*?</font></a></td>'
+zoj_div_pattern = '<div id="content_body">([\s\S]*?)</div>'
+zoj_ac_pattern = '<font color="red" size="4">([\s\S]*?)</font>'
+
+# acdream
+acdream_ul_pattern = '<ul class="user-info">([\s\S]*?)</ul>'
+acdream_ac_number_pattern = '<a href="[\s\S]*?">([\s\S]*?)</a>'
+
+# fzu
+fzu_ac_number_pattern = '<td>([\d]*?)</td>'
+
+# ural 
+ural_table_pattern = '<TABLE WIDTH="100%" CLASS="ranklist">([\s\S]*?)</TABLE>'
+ural_tr_pattern = '<TR CLASS="content">([\s\S]*?)</TR>'
+ural_user_pattern = '<A HREF=[\s\S]*>([\s\S]*?)</A>'
+ural_ac_number_pattern = '<TD>([\d]*)</TD>'
 # database configuration
 database = {
     'host': '',

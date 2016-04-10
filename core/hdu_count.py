@@ -17,14 +17,17 @@ def spide_for_hdu(username, url):
     table_data = match(hdu_table_pattern, data)
     if table_data is None:
         return match_user_failed
+    table_data = table_data[0]
     td_data = match(hdu_td_pattern, table_data)
-    if username.lower() != td_data[2].lower():
-        return match_user_failed 
-    return td_data[5]
+    for i in range(2, len(td_data), 6):
+        if td_data[i] == username:
+            return td_data[i+3]
+    return match_user_failed
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) <= 1:
         print('Input your hdu account please.')
     else:
-        spide_for_hdu(sys.argv[1], hdu_url+sys.argv[1])
+        ac_number = spide_for_hdu(sys.argv[1], hdu_url+sys.argv[1])
+        print(ac_number)
