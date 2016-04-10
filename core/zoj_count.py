@@ -8,7 +8,8 @@ from config import zoj_ac_pattern
 from config import zoj_div_pattern
 from config import get_data_failed
 
-def get_user_url(username, url):
+def get_user_url(username):
+    url = zoj_url
     data = decompress(spide(url.format(username)))
     if data is None:
         return get_data_failed
@@ -18,8 +19,9 @@ def get_user_url(username, url):
         return match_user_failed
     return 'http://www.icpc.moe' + user_url[0]
 
-def spide_for_zoj(username, url):
-    url = get_user_url(username, url) 
+def spide_for_zoj(username):
+    url = zoj_url
+    url = get_user_url(username) 
     if url == get_data_failed:
         return get_data_failed
     if url == match_user_failed:

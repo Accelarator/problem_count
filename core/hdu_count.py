@@ -9,7 +9,8 @@ from config import hdu_username_pattern
 from config import get_data_failed
 from config import match_user_failed
 
-def spide_for_hdu(username, url):
+def spide_for_hdu(username):
+    url = hdu_url + username
     data = decompress(spide(url))
     if data is None:
         return get_data_failed

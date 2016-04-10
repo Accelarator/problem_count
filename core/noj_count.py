@@ -17,7 +17,8 @@ def get_page_count(url):
     char_pos = page_info.index('=')
     return int(page_info[char_pos+1:])
 
-def spide_for_noj(username, url):
+def spide_for_noj(username):
+    url = noj_url
     page_count = get_page_count(url+'1')
     if page_count == get_data_failed:
         return get_data_failed

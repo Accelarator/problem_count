@@ -8,7 +8,8 @@ from common import match
 from common import decompress
 from common import spide
 
-def spide_for_poj(username, url):
+def spide_for_poj(username):
+    url = poj_url
     if len(username) <= 1:
         return match_user_failed
     data = decompress(spide(url.format(username)))

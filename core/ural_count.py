@@ -8,7 +8,8 @@ from config import ural_user_pattern
 from common import match
 from common import decompress
 from common import spide
-def spide_for_ural(username, url):
+def spide_for_ural(username):
+    url = ural_url
     data = decompress(spide(url+username))
     if data is None:
         return get_data_failed

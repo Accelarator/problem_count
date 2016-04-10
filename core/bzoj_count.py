@@ -6,12 +6,13 @@ from config import get_data_failed
 from config import match_user_failed
 from config import bzoj_ac_pattern
 
-def spide_for_bzoj(username, url):
+def spide_for_bzoj(username):
+    url = bzoj_url
     data = decompress(spide(url+username))
     if data is None:
         return get_data_failed
     data = data.decode('utf-8')
-    if data[-13:-1] == 'No such User!':
+    if data[-13:-1] == 'No such User':
         return match_user_failed
     ac_number = match(bzoj_ac_pattern, data)[0]
     return ac_number

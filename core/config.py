@@ -21,13 +21,13 @@ hdu_url = 'http://acm.hdu.edu.cn/search.php?field=author&key='
 fzu_url = 'http://acm.fzu.edu.cn/user.php?uname='
 poj_url = 'http://poj.org/searchuser?key={0}&B1=Search'
 noj_url = 'https://ac.2333.moe/User/user_list.xhtml?page='
-codeforces_url = 'http://codeforces.com/problemset/standings/page/'
 spoj_url = 'http://www.spoj.com/ranks/users/start='
 bzoj_url = 'http://www.lydsy.com/JudgeOnline/userinfo.php?user='
 sgu_url = 'http://acm.sgu.ru/teaminfo.php?id='
 ural_url = 'http://acm.timus.ru/search.aspx?Str='
 zoj_url = 'http://www.icpc.moe/onlinejudge/showRuns.do?contestId=1&search=true&firstId=-1&lastId=-1&problemCode=&handle={0}&idStart=&idEnd='
 acdream_url = 'http://acdream.info/user/'
+nyist_url = 'http://acm.nyist.edu.cn/JudgeOnline/profile.php?userid='
 # Corresponding regular expression pattern.
 # hdu 
 hdu_table_pattern = '<table width="80%" border="0" align="center" cellspacing="2" class=\'TABLE_TEXT\'>([\s\S]*?)</table>'
@@ -40,7 +40,6 @@ hdu_submit_number_pattern = '<A href="[\s\S]*?">([\s\S]*?)</A>'
 noj_page_count_pattern = '<a title="尾页" href="([\s\S]*?)" class="page_a">'
 noj_td_pattern = '<td style="text-align: center;">([\s\S]*?)</td>'
 noj_username_pattern = '<a target="_blank" href="[\s\S]*?">([\s\S]*?)</a>'
-
 # poj
 poj_table_pattern = '<table border=1 width=80%>([\s\S]*?)</table>'
 poj_td_pattern = '<td>([\s\S]*?)</td>'
@@ -70,6 +69,7 @@ ural_table_pattern = '<TABLE WIDTH="100%" CLASS="ranklist">([\s\S]*?)</TABLE>'
 ural_tr_pattern = '<TR CLASS="content">([\s\S]*?)</TR>'
 ural_user_pattern = '<A HREF=[\s\S]*>([\s\S]*?)</A>'
 ural_ac_number_pattern = '<TD>([\d]*)</TD>'
+
 # database configuration
 database = {
     'host': '',
