@@ -3,7 +3,7 @@ headers = {
     'User-Agent': '''Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)
     AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87
     Safari/537.36''',
-    'Connection': 'close',
+    'Connection': 'keep-alive',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 }
 # Error Code
@@ -72,14 +72,14 @@ ural_ac_number_pattern = '<TD>([\d]*)</TD>'
 
 # database configuration
 database = {
-    'host': '',
-    'db': '',
-    'user': '',
-    'password': '',
-    'charset': '',
+    'host': 'localhost',
+    'db': 'problem_count',
+    'user': 'root',
+    'password': 'zc87496604',
+    'charset': 'utf8',
 }
 
 # sql
-find_data = 'select id from {0} where username=\"{1}\" and ac_number={2} and submit_number={3}'
-insert_data = 'insert into {0} (username, ac_number, submit_number) values (\"{1}\", {2}, {3})'
-update_data = 'update {0} set username=\"{1}\",ac_number={2} ,submit_number={3} where id={4}'
+find_data = 'select id,ac_number from {0} where username=\"{1}\"'
+insert_data = 'insert into {0} (username, ac_number) values (\"{1}\", {2})'
+update_data = 'update {0} set username=\"{1}\",ac_number={2} where id={3}'

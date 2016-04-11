@@ -9,7 +9,7 @@ from ural_count import spide_for_ural
 from poj_count import spide_for_poj
 from config import get_data_failed
 from config import match_user_failed
-
+from spide_to_db import find_from_noj_db
 def proc(user, L, func, oj):
     ac = func(user)
     if ac == get_data_failed:
@@ -23,7 +23,6 @@ def proc(user, L, func, oj):
 def work_one(user, search_list):
     L = []
     proc(user, L, spide_for_hdu, 'hdu')
-#    proc(user, L, spide_for_noj, 'noj')
     proc(user, L, spide_for_zoj, 'zoj')
     proc(user, L, spide_for_bzoj, 'bzoj')
     proc(user, L, spide_for_acdream, 'acdream')
@@ -31,6 +30,7 @@ def work_one(user, search_list):
     proc(user, L, spide_for_sgu, 'sgu')
     proc(user, L, spide_for_ural, 'ural')
     proc(user, L, spide_for_poj, 'poj')
+    L.append((find_from_noj_db(user), 'noj'))
     search_list.append((user, L))
 
 def run(search_list, account):
@@ -38,9 +38,13 @@ def run(search_list, account):
 
 if __name__ == '__main__':
     import sys
+    import time
     if len(sys.argv) <= 1:
         print("input your account.")
     else:
+        a = time.time()
         L = []
         run(L, sys.argv[1])
         print(L)
+        b = time.time()
+        print('cost time is {0}'.format(round(b - a, 1)))
