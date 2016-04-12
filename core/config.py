@@ -86,7 +86,7 @@ database = {
     'host': 'localhost',
     'db': 'problem_count',
     'user': 'root',
-    'password': 'zc87496604',
+    'password': '',
     'charset': 'utf8',
 }
 
