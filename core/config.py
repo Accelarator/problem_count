@@ -22,6 +22,8 @@ fzu_url = 'http://acm.fzu.edu.cn/user.php?uname='
 poj_url = 'http://poj.org/searchuser?key={0}&B1=Search'
 noj_url = 'https://ac.2333.moe/User/user_list.xhtml?page='
 spoj_url = 'http://www.spoj.com/ranks/users/start='
+lightoj_login_url = 'http://lightoj.com/login_check.php'
+lightoj_userlist_url = 'http://lightoj.com/volume_ranklist.php?rank_start='
 bzoj_url = 'http://www.lydsy.com/JudgeOnline/userinfo.php?user='
 sgu_url = 'http://acm.sgu.ru/teaminfo.php?id='
 ural_url = 'http://acm.timus.ru/search.aspx?Str='
@@ -35,6 +37,15 @@ hdu_td_pattern = '<td>([\s\S]*?)</td>'
 hdu_username_pattern = '<A href="[\s\S]*?">([\s\S]*?)</A>'
 hdu_ac_number_pattern = '<A href="[\s\S]*?">([\s\S]*?)</A>'
 hdu_submit_number_pattern = '<A href="[\s\S]*?">([\s\S]*?)</A>'
+
+# lightoj
+lightoj_page_count_pattern = '<a class="user_link" style="color: #c75f3e;" href="[\s\S]*?">([\s\S]*?)</a>'
+lightoj_tr_data_one_pattern = '<tr class="newone">([\s\S]*?)</tr>'
+lightoj_tr_data_two_pattern = '<tr class="newtwo">([\s\S]*?)</tr>'
+lightoj_user_data_two_pattern = '<a class="user_link_newtwo" href="[\s\S]*?">([\s\S]*?)</a>'
+lightoj_user_data_one_pattern = '<a class="user_link_newone" href="[\s\S]*?">([\s\S]*?)</a>'
+lightoj_td_data_one_pattern = '<td class="newone" >([\s\S]*?)</td>'
+lightoj_td_data_two_pattern = '<td class="newtwo" >([\s\S]*?)</td>'
 
 # noj
 noj_page_count_pattern = '<a title="尾页" href="([\s\S]*?)" class="page_a">'
@@ -80,6 +91,6 @@ database = {
 }
 
 # sql
-find_data = 'select id,ac_number from {0} where username=\"{1}\"'
+find_data = 'select id, ac_number from {0} where username=\"{1}\"'
 insert_data = 'insert into {0} (username, ac_number) values (\"{1}\", {2})'
 update_data = 'update {0} set username=\"{1}\",ac_number={2} where id={3}'

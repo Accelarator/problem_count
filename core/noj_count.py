@@ -17,34 +17,30 @@ def get_page_count(url):
     char_pos = page_info.index('=')
     return int(page_info[char_pos+1:])
 
-def spide_for_noj(username):
+def spide_for_noj(user_list):
     url = noj_url
     page_count = get_page_count(url+'1')
     if page_count == get_data_failed:
-        return get_data_failed
+        return 
     for page in range(1, page_count+1):
         page_url = url + str(page)
-        info = find_user(username, page_url)
-        if info == get_data_failed:
-            return get_data_failed
-        if info != match_user_failed:
-            return info
-    return match_user_failed
+        res = find_user(user_list, page_url)
+        if res == False:
+            break
 
-def find_user(username, page_url):
-    data = decompress(spide(page_url)).decode('utf-8') 
+def find_user(user_list, page_url):
+    data = decompress(spide(page_url))
     if data is None:
         return get_data_failed
+    data = data.decode('utf-8')
     td_data = match(noj_td_pattern, data)
     for i in range(2, len(td_data), 6):
         cur_username = match(noj_username_pattern, td_data[i])[0]
-        if username.lower() == cur_username.lower():
-            return td_data[i+3]
-    return match_user_failed
+        print('get ', cur_username)
+        if int(td_data[i+3]) == 0:
+            return False
+        user_list.append((cur_username, td_data[i+3]))
+    return True
 if __name__ == '__main__':
-    import sys
-    if len(sys.argv) <= 1:
-        print('Input your noj account please.')
-    else:
-        ac_number = spide_for_noj(sys.argv[1], noj_url)
-        print(ac_number)
+    user_list = []
+    spide_for_noj(user_list)

@@ -9,8 +9,9 @@ from ural_count import spide_for_ural
 from poj_count import spide_for_poj
 from config import get_data_failed
 from config import match_user_failed
-from spide_to_db import find_from_noj_db
+from spide_to_db import find_from_db
 def proc(user, L, func, oj):
+    print('start fetch ', oj)
     ac = func(user)
     if ac == get_data_failed:
         L.append(("Fetch data error.", oj))
@@ -19,6 +20,7 @@ def proc(user, L, func, oj):
             L.append((0, oj))
         else:
             L.append((ac, oj))
+    print('end fetch ', oj)
 
 def work_one(user, search_list):
     L = []
@@ -30,7 +32,8 @@ def work_one(user, search_list):
     proc(user, L, spide_for_sgu, 'sgu')
     proc(user, L, spide_for_ural, 'ural')
     proc(user, L, spide_for_poj, 'poj')
-    L.append((find_from_noj_db(user), 'noj'))
+    L.append((find_from_db('count_noj', user), 'noj'))
+    L.append((find_from_db('count_lightoj', user), 'lightoj'))
     search_list.append((user, L))
 
 def run(search_list, account):
@@ -40,7 +43,7 @@ if __name__ == '__main__':
     import sys
     import time
     if len(sys.argv) <= 1:
-        print("input your account.")
+        print("Please input your account.")
     else:
         a = time.time()
         L = []
