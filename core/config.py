@@ -17,6 +17,7 @@ MPN = os.cpu_count()
 # Spide Time Limits
 TIME = 10
 # Each OJ's URL
+codeforces_url = 'http://codeforces.com/api/user.status?handle={0}&from=1&count=1000000000'
 hdu_url = 'http://acm.hdu.edu.cn/search.php?field=author&key='
 fzu_url = 'http://acm.fzu.edu.cn/user.php?uname='
 poj_url = 'http://poj.org/searchuser?key={0}&B1=Search'
@@ -86,7 +87,7 @@ database = {
     'host': 'localhost',
     'db': 'problem_count',
     'user': 'root',
-    'password': '',
+    'password': 'zc87496604',
     'charset': 'utf8',
 }
 
