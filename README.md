@@ -6,16 +6,16 @@
 ## 关于core
 
 ### 支持查询题量的OJ如下
-    * HDOJ
-    * POJ
-    * NOJ
-    * LightOJ
-    * SGU
-    * URAL
-    * Acdream
-    * BZOJ
-    * FZU OJ
-    * ZOJ
+    1.HDOJ
+    2.POJ
+    3.NOJ
+    4.LightOJ
+    5.SGU
+    6.URAL
+    7.Acdream
+    8.BZOJ
+    9.FZU OJ
+    10.ZOJ
     即将把Codefores的查询也加入
 
 ### 一些注意事项
