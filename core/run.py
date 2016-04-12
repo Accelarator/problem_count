@@ -10,35 +10,56 @@ from poj_count import spide_for_poj
 from config import get_data_failed
 from config import match_user_failed
 from spide_to_db import find_from_db
+from codeforces_count import spide_for_codeforces
+import threading
+import multiprocessing
 
-def proc(user, L, func, oj):
-    print('start fetch ', oj)
+def proc(lock, user, L, func, oj):
     ac = func(user)
+    lock.acquire()
     if ac == get_data_failed:
-        L.append(("Fetch data error.", oj))
+        L.append((-1, oj))
     else:
         if ac == match_user_failed:
             L.append((0, oj))
         else:
             L.append((ac, oj))
-    print('end fetch ', oj)
+    lock.release()
 
-def work_one(user, search_list):
-    L = []
-    proc(user, L, spide_for_hdu, 'hdu')
-    proc(user, L, spide_for_zoj, 'zoj')
-    proc(user, L, spide_for_bzoj, 'bzoj')
-    proc(user, L, spide_for_acdream, 'acdream')
-    proc(user, L, spide_for_fzu, 'fzu')
-    proc(user, L, spide_for_sgu, 'sgu')
-    proc(user, L, spide_for_ural, 'ural')
-    proc(user, L, spide_for_poj, 'poj')
+def work_one(lock, user, L):
+    proc(lock, user, L, spide_for_hdu, 'hdu')
+    proc(lock, user, L, spide_for_zoj, 'zoj')
+    proc(lock, user, L, spide_for_bzoj, 'bzoj')
+    proc(lock, user, L, spide_for_acdream, 'acdream')
+    proc(lock, user, L, spide_for_fzu, 'fzu')
+    proc(lock, user, L, spide_for_sgu, 'sgu')
+    proc(lock, user, L, spide_for_ural, 'ural')
+    proc(lock, user, L, spide_for_poj, 'poj')
     L.append((find_from_db('count_noj', user), 'noj'))
     L.append((find_from_db('count_lightoj', user), 'lightoj'))
-    search_list.append((user, L))
 
-def run(search_list, account):
-    work_one(account, search_list)
+def work_two(lock, user, L):
+    lock.acquire()
+    L.append((spide_for_codeforces(user), 'codeforces'))
+    lock.release()
+    
+def run(account):
+    L = []
+    lock = threading.Lock()
+    codeforces_thread = threading.Thread(target=work_two, args=(lock, account,
+                                                               L))
+    codeforces_thread.start()
+    work_one(lock, account, L)
+    codeforces_thread.join()
+    return account, L
+
+def start(account_list):
+    L = []
+    Pools = multiprocessing.Pool(len(account_list)) 
+    Pools.map_async(run, account_list,callback=lambda res:(L.append(res)))
+    Pools.close()
+    Pools.join()
+    return L
 
 if __name__ == '__main__':
     import sys
@@ -47,8 +68,7 @@ if __name__ == '__main__':
         print("Please input your account.")
     else:
         a = time.time()
-        L = []
-        run(L, sys.argv[1])
+        L = start(sys.argv[1:])
         print(L)
         b = time.time()
         print('cost time is {0}'.format(round(b - a, 1)))
