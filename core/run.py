@@ -10,6 +10,7 @@ from poj_count import spide_for_poj
 from config import get_data_failed
 from config import match_user_failed
 from spide_to_db import find_from_db
+
 def proc(user, L, func, oj):
     print('start fetch ', oj)
     ac = func(user)
